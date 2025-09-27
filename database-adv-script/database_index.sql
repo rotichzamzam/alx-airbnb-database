@@ -13,3 +13,12 @@ CREATE INDEX idx_property_id ON Property (property_id);
 CREATE INDEX idx_property_host_id ON Property (host_id);
 CREATE INDEX idx_property_location ON Property (location);
 CREATE INDEX idx_property_price ON Property (pricepernight);
+
+
+-- Without index
+EXPLAIN ANALYZE
+SELECT *
+FROM Booking b
+JOIN User u ON b.user_id = u.user_id
+WHERE u.email = 'alice@example.com';
+
